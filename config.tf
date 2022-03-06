@@ -18,6 +18,14 @@ resource "random_string" "autonomous_database_admin_password" {
   min_special = 1
 }
 
+data "oci_identity_compartments" "db" {
+  compartment_id = var.tenancy.id
+  access_level   = "ANY"
+  compartment_id_in_subtree = true
+  name           = try(var.database.compartment, var.resident.name)
+  state          = "ACTIVE"
+}
+
 data "oci_database_autonomous_db_versions" "test_autonomous_db_versions" {
   #Required
   compartment_id = var.compartment_ocid

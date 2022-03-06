@@ -1,6 +1,20 @@
 # Copyright (c) 2020 Oracle and/or its affiliates.
 # Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl.
 
+# Resources
+resource "oci_database_autonomous_database" "adb" {
+  compartment_id = data.oci_identity_compartments.db.compartments[0].id
+  cpu_core_count           = var.cpu_core_count
+  data_storage_size_in_tbs = var.data_storage_size_in_tbs
+  db_name                  = var.db_name
+  admin_password           = var.admin_password
+  db_version               = var.db_version
+  db_workload              = var.db_workload
+  display_name             = var.db_name
+  is_free_tier             = var.is_free_tier
+  license_model            = var.license_model
+}
+
 
 resource "oci_database_autonomous_database" "db_free" {
   #Required
