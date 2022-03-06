@@ -2,10 +2,10 @@
 # Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl.
 
 variable "input" {
-    type = object({
-      cores = number
-    })
-    description = "Resources identifier from resident module"
+  type = object({
+    password = string
+  })
+  description = "Input for database module"
 }
 
 variable "tenancy" {
@@ -44,6 +44,17 @@ variable "resident" {
   description = "Service Configuration"
 }
 
+variable "encryption" {
+  type = object({
+    compartment = string,
+    vault       = string,
+    stage       = number,
+    key         = map(any),
+    signature   = map(string)
+  })
+  description = "Enabling enryption for a service resident"
+}
+
 variable "network" {
   type = object({
     name         = string,
@@ -59,4 +70,14 @@ variable "network" {
     security_lists = any
   })
   description = "Network Configuration"
+}
+
+variable "database" {
+  type = object({
+    oltp = any,
+    dw   = any,
+    apex = any,
+    json = any,
+  })
+  description = "Database Configuration"
 }

@@ -2,20 +2,20 @@
 # Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl.
 
 # Resources
-resource "oci_database_autonomous_database" "adb" {
-  compartment_id = data.oci_identity_compartments.db.compartments[0].id
-  cpu_core_count           = var.cpu_core_count
-  data_storage_size_in_tbs = var.data_storage_size_in_tbs
-  db_name                  = var.db_name
-  admin_password           = var.admin_password
-  db_version               = var.db_version
-  db_workload              = var.db_workload
-  display_name             = var.db_name
-  is_free_tier             = var.is_free_tier
-  license_model            = var.license_model
+resource "oci_database_autonomous_database" "oltp" {
+  compartment_id           = data.oci_identity_compartments.db.compartments[0].id
+  cpu_core_count           = var.database.cores
+  data_storage_size_in_tbs = var.database.storage
+  db_name                  = var.database.name
+  admin_password           = var.input.password == false ? random_string.admin_password : random_string.admin_password 
+  db_version               = var.database.version
+  display_name             = var.database.display_name
+  db_workload              = var.database.type
+  is_free_tier             = var.tenancy.class    == "FREE_TIER" ? "true" : "false"
+  license_model            = var.database.license
 }
 
-
+/*
 resource "oci_database_autonomous_database" "db_free" {
   #Required
   admin_password           = random_string.autonomous_database_admin_password.result
@@ -98,6 +98,7 @@ resource "oci_database_autonomous_database" "dbms_status" {
   db_name                     = "adbdbms"
   database_management_status  = "ENABLED"
 }
+*/
 
 // Per service, we need to pass in a back up that is at least 2 hours old
 /*

@@ -10,7 +10,7 @@ terraform {
   }
 }
 
-resource "random_string" "autonomous_database_admin_password" {
+resource "random_string" "admin_password" {
   length      = 16
   min_numeric = 1
   min_lower   = 1
