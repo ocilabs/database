@@ -78,6 +78,8 @@ variable "database" {
     cores        = number,
     storage      = number,
     type         = string,
+    compartment  = string,
+    stage        = number,
     display_name = string,
     version      = string,
     license      = string
