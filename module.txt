@@ -6,15 +6,12 @@ module "database" {
   for_each   = {for db in local.databases : db.name => db}
   tenancy    = module.configuration.tenancy
   resident   = module.configuration.resident
-  network    = module.configuration.network[...]
-  encryption = module.configuration.encryption[...]
   input = {
     password   = var.create_wallet ? "wallet" : "random"
   }
   assets = {
     resident   = module.resident
     encryption = module.encryption
-    network    = module.network
   }
 }
 output "encryption" {

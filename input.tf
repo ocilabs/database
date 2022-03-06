@@ -74,7 +74,13 @@ variable "network" {
 
 variable "database" {
   type = object({
-    database = map(any)
+    name         = string,
+    cores        = number,
+    storage      = number,
+    type         = string,
+    display_name = string,
+    version      = string,
+    license      = string
   })
   description = "Database Configuration"
 }
