@@ -74,10 +74,7 @@ variable "network" {
 
 variable "database" {
   type = object({
-    oltp = any,
-    dw   = any,
-    apex = any,
-    json = any,
+    database = map(any)
   })
   description = "Database Configuration"
 }

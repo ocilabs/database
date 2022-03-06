@@ -18,12 +18,20 @@ resource "random_string" "admin_password" {
   min_special = 1
 }
 
-data "oci_identity_compartments" "db" {
+data "oci_identity_compartments" "database" {
   compartment_id = var.tenancy.id
   access_level   = "ANY"
   compartment_id_in_subtree = true
   name           = try(var.database.compartment, var.resident.name)
   state          = "ACTIVE"
+}
+data "oci_database_autonomous_databases" "databases" {
+  #Required
+  compartment_id = var.compartment_ocid
+
+  #Optional
+  display_name = oci_database_autonomous_database.autonomous_database.display_name
+  db_workload  = var.autonomous_database_db_workload
 }
 
 data "oci_database_autonomous_db_versions" "test_autonomous_db_versions" {
@@ -37,15 +45,6 @@ data "oci_database_autonomous_db_versions" "test_autonomous_db_versions" {
     name   = "version"
     values = ["19c"]
   }
-}
-
-data "oci_database_autonomous_databases" "autonomous_databases" {
-  #Required
-  compartment_id = var.compartment_ocid
-
-  #Optional
-  display_name = oci_database_autonomous_database.autonomous_database.display_name
-  db_workload  = var.autonomous_database_db_workload
 }
 
 

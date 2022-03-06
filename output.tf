@@ -3,17 +3,17 @@
 
 
 output "autonomous_database_admin_password" {
-  value = random_string.autonomous_database_admin_password.result
+  value = var.input.password == false ? random_string.admin_password.result : random_string.admin_password.result
 }
 
 output "autonomous_database_high_connection_string" {
   value = lookup(
-    oci_database_autonomous_database.autonomous_database.connection_strings[0],
+    oci_database_autonomous_database.database.connection_strings[0],
     "high",
     "unavailable",
   )
 }
 
-output "autonomous_databases" {
-  value = data.oci_database_autonomous_databases.autonomous_databases.autonomous_databases
+output "databases" {
+  value = data.oci_database_autonomous_databases.databases.autonomous_databases
 }

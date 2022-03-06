@@ -1,9 +1,8 @@
 # Copyright (c) 2020 Oracle and/or its affiliates.
 # Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl.
 
-# Resources
-resource "oci_database_autonomous_database" "oltp" {
-  compartment_id           = data.oci_identity_compartments.db.compartments[0].id
+resource "oci_database_autonomous_database" "database" {
+  compartment_id           = data.oci_identity_compartments.database.compartments[0].id
   cpu_core_count           = var.database.cores
   data_storage_size_in_tbs = var.database.storage
   db_name                  = var.database.name
