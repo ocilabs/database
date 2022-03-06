@@ -25,26 +25,12 @@ data "oci_identity_compartments" "database" {
   name           = try(var.database.compartment, var.resident.name)
   state          = "ACTIVE"
 }
-data "oci_database_autonomous_databases" "databases" {
-  #Required
-  compartment_id = var.compartment_ocid
-
-  #Optional
-  display_name = oci_database_autonomous_database.autonomous_database.display_name
-  db_workload  = var.autonomous_database_db_workload
+data "oci_database_autonomous_databases" "database" {
+  compartment_id = data.oci_identity_compartments.database.compartments[0].id
 }
 
-data "oci_database_autonomous_db_versions" "test_autonomous_db_versions" {
-  #Required
-  compartment_id = var.compartment_ocid
-
-  #Optional
-  db_workload = var.autonomous_database_db_workload
-
-  filter {
-    name   = "version"
-    values = ["19c"]
-  }
+data "oci_database_autonomous_db_versions" "database" {
+  compartment_id = data.oci_identity_compartments.database.compartments[0].id
 }
 
 
