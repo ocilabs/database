@@ -21,8 +21,8 @@ variable "tenancy" {
 
 variable "assets" {
   type = object({
-    resident = any
-    network  = any
+    resident   = any
+    encryption = any
   })
   description = "Retrieve asset identifier"
 }
@@ -54,23 +54,6 @@ variable "encryption" {
     signature   = map(string)
   })
   description = "Enabling enryption for a service resident"
-}
-
-variable "network" {
-  type = object({
-    name         = string,
-    region       = string,
-    display_name = string,
-    dns_label    = string,
-    compartment  = string,
-    stage        = number,
-    cidr         = string,
-    gateways     = any,
-    route_tables = map(any),
-    subnets      = map(any),
-    security_lists = any
-  })
-  description = "Network Configuration"
 }
 
 variable "database" {
