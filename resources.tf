@@ -6,7 +6,7 @@ resource "oci_database_autonomous_database" "database" {
   cpu_core_count           = var.database.cores
   data_storage_size_in_tbs = var.database.storage
   db_name                  = var.database.name
-  admin_password           = var.input.password == false ? random_string.admin_password : random_string.admin_password 
+  admin_password           = var.input.password == "random" ? random_string.admin_password : random_string.admin_password 
   db_version               = var.database.version
   display_name             = var.database.display_name
   db_workload              = var.database.type
