@@ -44,18 +44,6 @@ variable "resident" {
   description = "Service Configuration"
 }
 
-variable "encryption" {
-  type = object({
-    compartment = string,
-    vault       = string,
-    stage       = number,
-    key         = map(any),
-    signatures  = map(string),
-    secrets     = map(string)
-  })
-  description = "Enabling enryption for a service resident"
-}
-
 variable "database" {
   type = object({
     name         = string,
