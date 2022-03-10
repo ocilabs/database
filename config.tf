@@ -29,10 +29,6 @@ data "oci_database_autonomous_databases" "database" {
   compartment_id = data.oci_identity_compartments.database.compartments[0].id
 }
 
-data "oci_database_autonomous_db_versions" "database" {
-  compartment_id = data.oci_identity_compartments.database.compartments[0].id
-}
-
 
 locals {}
 
