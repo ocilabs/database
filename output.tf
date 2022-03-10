@@ -9,6 +9,8 @@ output "autonomous_database_high_connection_string" {
   value = oci_database_autonomous_database.database.connection_strings[0]
 }
 
+/*
 output "databases" {
   value = data.oci_database_autonomous_databases.database
 }
+*/
