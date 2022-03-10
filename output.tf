@@ -10,5 +10,5 @@ output "autonomous_database_high_connection_string" {
 }
 
 output "databases" {
-  value = data.oci_database_autonomous_databases.Database
+  value = data.oci_database_autonomous_databases.database
 }
