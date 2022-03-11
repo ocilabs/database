@@ -10,5 +10,5 @@ output "connection_strings" {
 }
 
 output "databases" {
-  value = data.oci_database_autonomous_databases.database[0]
+  value = data.oci_database_autonomous_databases.database
 }
