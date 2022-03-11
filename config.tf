@@ -29,8 +29,10 @@ data "oci_database_autonomous_databases" "database" {
   compartment_id = data.oci_identity_compartments.database.compartments[0].id
 }
 
+locals {
+  adb_count = var.input.create ? 1 : 0
+}
 
-locals {}
 
 // Define the wait state for the data requests
 resource "null_resource" "previous" {}

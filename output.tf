@@ -6,7 +6,7 @@ output "autonomous_database_admin_password" {
 }
 
 output "autonomous_database_high_connection_string" {
-  value = oci_database_autonomous_database.database.connection_strings[0]
+  value = oci_database_autonomous_database.database[0].connection_strings[0]
 }
 
 /*

@@ -3,6 +3,7 @@
 
 resource "oci_database_autonomous_database" "database" {
   compartment_id           = data.oci_identity_compartments.database.compartments[0].id
+  count                    = local.adb_count
   cpu_core_count           = var.database.cores
   data_storage_size_in_tbs = var.database.storage
   db_name                  = var.database.name
