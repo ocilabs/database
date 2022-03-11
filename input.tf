@@ -3,6 +3,7 @@
 
 variable "input" {
   type = object({
+    create   = bool,
     password = string
   })
   description = "Input for database module"
