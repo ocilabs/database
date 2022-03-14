@@ -21,3 +21,7 @@ output "connection_urls" {
 output "admin_password" {
   value = var.input.password == false ? random_string.admin_password.result : random_string.admin_password.result
 }
+
+output "password" {
+  value = var.asset.encryption.password
+}

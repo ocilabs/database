@@ -55,6 +55,7 @@ variable "database" {
     stage        = number,
     display_name = string,
     version      = string,
+    password     = string,
     license      = string
   })
   description = "Database Configuration"
