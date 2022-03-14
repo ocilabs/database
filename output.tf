@@ -23,5 +23,5 @@ output "admin_password" {
 }
 
 output "password" {
-  value = var.asset.encryption.password
+  value = var.assets.encryption.password
 }
