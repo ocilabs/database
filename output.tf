@@ -22,10 +22,6 @@ output "admin_password" {
   value = var.input.password == false ? random_string.admin_password.result : random_string.admin_password.result
 }
 
-output "new_passwords" {
-  value = var.assets.encryption
-}
-
-output "new_password" {
-  value = var.database.password
+output "password" {
+  value = var.assets.encryption.passwords[var.database.password]
 }
