@@ -19,10 +19,10 @@ No modules.
 | Name | Type |
 |------|------|
 | [null_resource.previous](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
-| [oci_database_autonomous_database.database](https://registry.terraform.io/providers/hashicorp/oci/latest/docs/resources/database_autonomous_database) | resource |
+| [oci_database_autonomous_database.database](https://registry.terraform.io/providers/oracle/oci/latest/docs/resources/database_autonomous_database) | resource |
 | [time_sleep.wait](https://registry.terraform.io/providers/hashicorp/time/latest/docs/resources/sleep) | resource |
-| [oci_database_autonomous_databases.database](https://registry.terraform.io/providers/hashicorp/oci/latest/docs/data-sources/database_autonomous_databases) | data source |
-| [oci_identity_compartments.database](https://registry.terraform.io/providers/hashicorp/oci/latest/docs/data-sources/identity_compartments) | data source |
+| [oci_database_autonomous_databases.database](https://registry.terraform.io/providers/oracle/oci/latest/docs/data-sources/database_autonomous_databases) | data source |
+| [oci_identity_compartments.database](https://registry.terraform.io/providers/oracle/oci/latest/docs/data-sources/identity_compartments) | data source |
 
 ## Inputs
 
