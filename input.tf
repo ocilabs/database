@@ -46,16 +46,16 @@ variable "resident" {
 
 variable "database" {
   type = object({
-    name         = string,
     cores        = number,
+    compartment  = string,
+    display_name = string,
+    license      = string,
+    name         = string,
+    password     = string,
+    stage        = number,
     storage      = number,
     type         = string,
-    compartment  = string,
-    stage        = number,
-    display_name = string,
-    version      = string,
-    password     = string,
-    license      = string
+    version      = string
   })
   description = "Database Configuration"
 }
