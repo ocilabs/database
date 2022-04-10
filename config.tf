@@ -11,7 +11,7 @@ terraform {
 }
 
 data "oci_identity_compartments" "database" {
-  compartment_id = var.input.tenancy.tenancy_id
+  compartment_id = var.input.tenancy.id
   access_level   = "ANY"
   compartment_id_in_subtree = true
   name           = try(var.input.database.compartment, var.input.service.name)
