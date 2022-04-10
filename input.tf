@@ -1,61 +1,27 @@
 # Copyright (c) 2020 Oracle and/or its affiliates.
 # Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl.
 
-variable "input" {
+variable "options" {
   type = object({
-    create   = bool
+    create   = bool,
+    password = string
   })
   description = "Input for database module"
 }
 
-variable "tenancy" {
+variable "input" {
   type = object({
-    id      = string,
-    class   = number,
-    buckets = string,
-    region  = map(string)
+    account  = any,
+    database = any,
+    resident = any
   })
-  description = "Tenancy Configuration"
 }
 
 variable "assets" {
   type = object({
+    encryption = any,
+    network    = any,
     resident   = any
-    encryption = any
   })
   description = "Retrieve asset identifier"
-}
-
-variable "resident" {
-  type = object({
-    owner          = string,
-    name           = string,
-    label          = string,
-    stage          = number,
-    region         = map(string)
-    compartments   = map(number),
-    repository     = string,
-    groups         = map(string),
-    policies       = map(any),
-    notifications  = map(any),
-    tag_namespaces = map(number),
-    tags           = any
-  })
-  description = "Service Configuration"
-}
-
-variable "database" {
-  type = object({
-    cores        = number,
-    compartment  = string,
-    display_name = string,
-    license      = string,
-    name         = string,
-    password     = string,
-    stage        = number,
-    storage      = number,
-    type         = string,
-    version      = string
-  })
-  description = "Database Configuration"
 }
