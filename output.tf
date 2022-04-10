@@ -2,7 +2,7 @@
 # Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl.
 
 output "admin_password" {
-  value = var.input.service.stage < 2 ? var.assets.encryption.passwords[var.input.database.password] : data.oci_secrets_secretbundle.database.secret_id
+  value = var.input.service.stage < 2 ? var.assets.encryption.passwords[var.input.database.password] : base64decode(data.oci_secrets_secretbundle.database.secret_bundle_content.0.content)
 }
 
 /*
