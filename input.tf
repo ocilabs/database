@@ -3,6 +3,7 @@
 
 variable "config" {
   type = object({
+    class    = string,
     create   = bool,
     password = string
   })
