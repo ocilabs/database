@@ -11,7 +11,7 @@ variable "config" {
 
 variable "input" {
   type = object({
-    account  = any,
+    tenancy = any,
     service = any,
     database = any
   })
