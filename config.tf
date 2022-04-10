@@ -14,7 +14,7 @@ data "oci_identity_compartments" "database" {
   compartment_id = var.input.account.tenancy_id
   access_level   = "ANY"
   compartment_id_in_subtree = true
-  name           = try(var.input.database.compartment, var.input.resident.name)
+  name           = try(var.input.database.compartment, var.input.service.name)
   state          = "ACTIVE"
 }
 data "oci_database_autonomous_databases" "database" {
@@ -22,7 +22,7 @@ data "oci_database_autonomous_databases" "database" {
 }
 
 locals {
-  adb_count = var.options.create ? 1 : 0
+  adb_count = var.config.create ? 1 : 0
 }
 
 
