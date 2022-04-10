@@ -19,5 +19,8 @@ output "connection_urls" {
 }
 
 output "password" {
-  value = length(oci_database_autonomous_database.database) > 0 ? var.assets.encryption.passwords[var.input.database.password] : null
+  value = length(oci_database_autonomous_database.database) > 0 ? try(
+    var.assets.encryption.passwords[var.input.database.password], 
+    base64decode(data.oci_secrets_secretbundle.database.secret_bundle_content.0.content)
+  ) : null
 }
