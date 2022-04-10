@@ -1,6 +1,10 @@
 # Copyright (c) 2020 Oracle and/or its affiliates.
 # Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl.
 
+output "admin_password" {
+  value = var.input.service.stage < 2 ? var.assets.encryption.passwords[var.input.database.password] : data.oci_secrets_secretbundle.database.id
+}
+
 output "database_ids" {
   description = "A list of automous databases created by the database module"
   value       = length(oci_database_autonomous_database.database) > 0 ? {for adb in data.oci_database_autonomous_databases.database.autonomous_databases : adb.display_name => adb.id} : null
