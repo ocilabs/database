@@ -7,7 +7,7 @@ resource "oci_database_autonomous_database" "database" {
   cpu_core_count           = var.config.database.cores
   data_storage_size_in_tbs = var.config.database.storage
   db_name                  = var.config.database.name
-  admin_password           = var.config.service.stage < 2 ? var.assets.encryption.passwords[var.config.database.password] : base64decode(data.oci_secrets_secretbundle.database.secret_bundle_content.0.content)
+  admin_password           = var.schema.password == "RANDOM" ? var.assets.encryption.passwords[var.config.database.password] : base64decode(data.oci_secrets_secretbundle.database.secret_bundle_content.0.content)
   db_version               = var.config.database.version
   display_name             = var.config.database.display_name
   db_workload              = var.config.database.type
