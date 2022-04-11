@@ -11,15 +11,15 @@ terraform {
 }
 
 data "oci_identity_compartments" "database" {
-  compartment_id = var.input.tenancy.id
+  compartment_id = var.config.tenancy.id
   access_level   = "ANY"
   compartment_id_in_subtree = true
-  name           = try(var.input.database.compartment, var.input.service.name)
+  name           = try(var.config.database.compartment, var.config.service.name)
   state          = "ACTIVE"
 }
 
 data "oci_secrets_secretbundle" "database" {
-  secret_id = var.assets.encryption.secret_ids["${var.input.database.display_name}_secret"]
+  secret_id = var.assets.encryption.secret_ids["${var.config.database.display_name}_secret"]
 }
 data "oci_database_autonomous_databases" "database" {
   compartment_id = data.oci_identity_compartments.database.compartments[0].id
