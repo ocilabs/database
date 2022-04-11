@@ -26,7 +26,7 @@ data "oci_database_autonomous_databases" "database" {
 }
 
 locals {
-  adb_count = var.config.create ? 1 : 0
+  adb_count = var.schema.create ? 1 : 0
 }
 
 
