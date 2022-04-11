@@ -2,6 +2,10 @@
 # Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl.
 
 resource "oci_database_autonomous_database" "database" {
+  depends_on = [
+    data.oci_identity_compartments.database,
+    data.oci_secrets_secretbundle.database
+  ]
   compartment_id           = data.oci_identity_compartments.database.compartments[0].id
   count                    = local.adb_count
   cpu_core_count           = var.config.database.cores
