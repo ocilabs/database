@@ -12,8 +12,8 @@ variable "options" {
 
 variable "configuration" {
   type = object({
-    tenancy = any,
-    service = any,
+    tenancy  = any,
+    resident = any,
     database = any
   })
 }
