@@ -18,5 +18,5 @@ resource "oci_database_autonomous_database" "database" {
   is_free_tier             = var.options.class == "FREE_TIER" ? true : false
   license_model            = var.configuration.database.license
   defined_tags             = var.assets.resident.defined_tags
-  freeform_tags            = var.assets.resident.freeform_tags
+  freeform_tags            = local.module_freeform_tags
 }
