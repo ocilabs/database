@@ -27,11 +27,11 @@ data "oci_database_autonomous_databases" "database" {
 
 locals {
   adb_count = var.options.create ? 1 : 0
+  merged_freeform_tags = merge(local.module_freeform_tags, var.assets.resident.freeform_tags)
   module_freeform_tags = {
     # list of freeform tags, added to stack provided freeform tags
     terraformed = "Please do not edit manually"
   }
-  merged_freeform_tags = merge(local.module_freeform_tags, var.assets.resident.freeform_tags)
 }
 
 
