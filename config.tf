@@ -14,7 +14,7 @@ data "oci_identity_compartments" "database" {
   compartment_id = var.account.tenancy_id
   access_level   = "ANY"
   compartment_id_in_subtree = true
-  name           = try(var.configuration.database.compartment, var.configuration.service.name)
+  name           = try(var.configuration.database.compartment, var.configuration.resident.name)
   state          = "ACTIVE"
 }
 
