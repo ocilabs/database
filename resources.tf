@@ -15,7 +15,7 @@ resource "oci_database_autonomous_database" "database" {
   db_version               = var.configuration.database.version
   display_name             = var.configuration.database.display_name
   db_workload              = var.configuration.database.type
-  is_free_tier             = var.options.class == "FREE_TIER" ? true : false
+  is_free_tier             = var.account.class == 0 ? true : false
   license_model            = var.configuration.database.license
   defined_tags             = var.assets.resident.defined_tags
   freeform_tags            = local.module_freeform_tags
